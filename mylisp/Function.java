@@ -31,6 +31,7 @@ public class Function extends Atom {
         regist("IF", new If());
         regist("TYPE-OF", new TypeOf());
         regist("SYMBOL-FUNCTION", new SymbolFunction());
+        regist("PRINT", new Print());
     }
 
     // register a system function
@@ -215,6 +216,15 @@ public class Function extends Atom {
         public T funcall(List arguments) throws Exception {
             T arg1 = Eval.eval(((Cons)arguments).car);
             return ((Symbol)arg1).function;
+        }
+    }
+
+    // PRINT
+    class Print extends Function {
+        public T funcall(List arguments) throws Exception {
+            T arg1 = Eval.eval(((Cons)arguments).car);
+            System.out.println(arg1);
+            return arg1;
         }
     }
 }

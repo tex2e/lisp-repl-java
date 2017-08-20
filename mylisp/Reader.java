@@ -113,7 +113,7 @@ public class Reader {
     }
 
     private static T makeList() {
-        getChar();
+        getChar(); // skip '('
         skipSpace();
         if (ch == ')') {
             getChar();
@@ -125,9 +125,7 @@ public class Reader {
             list.car = getSexp();
             skipSpace();
             if (indexOfLine > lineLength) return Null.Nil;
-            if (ch == ')') {
-                break;
-            }
+            if (ch == ')') break;
             if (ch == '.') {
                 getChar();
                 list.cdr = getSexp();
@@ -138,7 +136,7 @@ public class Reader {
             list.cdr = new Cons();
             list = (Cons)list.cdr;
         }
-        getChar(); // skip read close ')'
+        getChar(); // skip ')'
         return top;
     }
 
