@@ -2,7 +2,7 @@
 (setq hoge '(lion tiger leopard))
 (cons (car hoge) (cdr hoge))
 (defun fact (n) (if (<= n 1) 1 (* n (fact (- n 1)))))
-(= (fact 4) (* 2 (* 3 4))
+(= (fact 4) (* 2 (* 3 4)))
 (type-of '+)
 (type-of '(foo bar))
 (symbol-function 'fact)
